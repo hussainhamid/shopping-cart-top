@@ -1,9 +1,11 @@
 import NavBar from "./files/nav";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { useState } from "react";
 import Cart from "./files/cart";
 import Home from "./files/home-page";
 import Shop from "./files/shop";
 import ErrorPage from "./files/error";
+import "./App.css";
 
 function Layout() {
   return (
@@ -16,7 +18,6 @@ function Layout() {
   );
 }
 
-// Define routes with the layout
 const router = createBrowserRouter([
   {
     path: "/",

@@ -13,7 +13,7 @@ export default function NavBar() {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 30px;
+    height: 5rem;
   `;
 
   const Ul = styled.ul`
@@ -35,18 +35,19 @@ export default function NavBar() {
   `;
 
   const Button = styled.button`
-    border: 5px solid grey;
     border-radius: 15px;
     padding: 10px;
     font-size: 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 5rem;
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 
     &:hover {
       color: rgb(99, 89, 59);
       transform: scale(1.1);
+      cursor: pointer;
     }
   `;
 
@@ -54,22 +55,28 @@ export default function NavBar() {
     <NavDiv>
       <Ul>
         <Li>
-          <Button>
-            <StyledLink to="/">Home</StyledLink>
-            <Icon path={mdiHomeOutline} size={1} />
-          </Button>
+          <StyledLink to="/">
+            <Button>
+              Home
+              <Icon path={mdiHomeOutline} size={1} />
+            </Button>
+          </StyledLink>
         </Li>
         <Li>
-          <Button>
-            <StyledLink to="/shop">Shop</StyledLink>
-            <Icon path={mdiStoreOutline} size={1} />
-          </Button>
+          <StyledLink to="/shop">
+            <Button>
+              Shop
+              <Icon path={mdiStoreOutline} size={1} />
+            </Button>
+          </StyledLink>
         </Li>
         <Li>
-          <Button>
-            <StyledLink to="/cart">Cart</StyledLink>
-            <Icon path={mdiCartOutline} size={1} />
-          </Button>
+          <StyledLink to="/cart">
+            <Button>
+              Cart
+              <Icon path={mdiCartOutline} size={1} />
+            </Button>
+          </StyledLink>
         </Li>
       </Ul>
     </NavDiv>
