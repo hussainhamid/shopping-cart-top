@@ -8,6 +8,7 @@ import "./App.css";
 import { useState } from "react";
 import { createContext } from "react";
 
+//eslint-disable-next-line
 export const ShopContext = createContext({
   cart: [],
   addToCart: () => {},
