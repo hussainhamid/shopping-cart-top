@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <HomeDiv>
-        <H1>this is the home page.</H1>
+        <H1>this is the home page,</H1>
         <H2>of a wonderful website.</H2>
       </HomeDiv>
     </>
