@@ -6,37 +6,37 @@ import Shop from "./files/shop";
 import ErrorPage from "./files/error";
 import "./App.css";
 import { useState } from "react";
+import { createContext } from "react";
 
-function Layout({ addToCart, cart, removeFromCart }) {
+export const ShopContext = createContext({
+  cart: [],
+  addToCart: () => {},
+  removeFromCart: () => {},
+});
+
+function Layout() {
   return (
     <>
       <NavBar />
       <main>
-        <Outlet context={{ addToCart, cart, removeFromCart }} />
+        <Outlet />
       </main>
     </>
   );
 }
 
-const router = (addToCart, cart, removeFromCart) =>
-  createBrowserRouter([
-    {
-      path: "/",
-      element: (
-        <Layout
-          addToCart={addToCart}
-          cart={cart}
-          removeFromCart={removeFromCart}
-        />
-      ),
-      errorElement: <ErrorPage />,
-      children: [
-        { path: "/", element: <Home /> },
-        { path: "shop", element: <Shop /> },
-        { path: "cart", element: <Cart /> },
-      ],
-    },
-  ]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "shop", element: <Shop /> },
+      { path: "cart", element: <Cart /> },
+    ],
+  },
+]);
 
 export default function App() {
   const [cart, setcart] = useState([]);
@@ -51,5 +51,9 @@ export default function App() {
     );
   };
 
-  return <RouterProvider router={router(addToCart, cart, removeFromCart)} />;
+  return (
+    <ShopContext.Provider value={{ cart, addToCart, removeFromCart }}>
+      <RouterProvider router={router} />
+    </ShopContext.Provider>
+  );
 }

@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { ShopContext } from "../App";
 
 export default function Shop() {
-  const { addToCart } = useOutletContext();
+  const { addToCart } = useContext(ShopContext);
 
   const Div = styled.div`
     height: 80vh;

@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { useOutletContext } from "react-router-dom";
+import { useContext } from "react";
+import { ShopContext } from "../App";
 
 export default function Cart() {
-  const { cart, removeFromCart } = useOutletContext();
+  const { cart, removeFromCart } = useContext(ShopContext);
 
   const H3 = styled.h3`
     font-weight: 500;
