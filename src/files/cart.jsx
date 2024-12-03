@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { ShopContext } from "../App";
 
 export default function Cart() {
@@ -55,15 +55,21 @@ export default function Cart() {
 
   const H1 = styled.h1`
     text-align: center;
-    font-weight: 500;
+    font-weight: 400;
   `;
 
   if (cart.length === 0) {
     return <H1>your cart is empty.</H1>;
   }
 
+  //eslint-disable-next-line
+  const totalPrice = useMemo(() => {
+    return cart.reduce((total, product) => total + product.price, 0).toFixed(2);
+  }, [cart]);
+
   return (
     <div>
+      <H3>Total price: ${totalPrice}</H3>
       <ProductsDiv>
         {cart.map((product, index) => (
           <EachProducts key={index}>

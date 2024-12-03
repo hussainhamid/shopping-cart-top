@@ -70,8 +70,10 @@ export default function Shop() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const fetchUrl = "https://fakestoreapi.com/products/";
+
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products/", { mode: "cors" })
+    fetch(fetchUrl, { mode: "cors" })
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("server error");
@@ -92,7 +94,7 @@ export default function Shop() {
     return (
       <>
         <Div>
-          <H1>loading...</H1>
+          <H1>Loading...</H1>
         </Div>
       </>
     );
